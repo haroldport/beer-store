@@ -1,3 +1,12 @@
-from django.db import models
+from dataclasses import dataclass
 
-# Create your models here.
+
+@dataclass
+class Item:
+    name: str
+    quantity: int
+    price_per_unit: float = 0
+    total: float = 0
+
+    def calculate_total(self):
+        self.total = self.quantity * self.price_per_unit

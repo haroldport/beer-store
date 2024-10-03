@@ -1,0 +1,258 @@
+{
+  "orders": [
+    {
+      "id": "1",
+      "created": "2024-09-10 18:00:00",
+      "paid": false,
+      "subtotal": 28.50,
+      "taxes": 3.42,
+      "discounts": 0,
+      "items": [
+        {
+          "name": "Pilsener",
+          "quantity": 5,
+          "price_per_unit": 2.50,
+          "total": 12.50
+        },
+        {
+          "name": "Club Premium",
+          "quantity": 3,
+          "price_per_unit": 3.00,
+          "total": 9.00
+        },
+        {
+          "name": "Budweiser",
+          "quantity": 2,
+          "price_per_unit": 2.50,
+          "total": 5.00
+        },
+        {
+          "name": "Club Verde",
+          "quantity": 1,
+          "price_per_unit": 2.00,
+          "total": 2.00
+        }
+      ],
+      "rounds": [
+        {
+          "created": "2024-09-10 18:05:30",
+          "items": [
+            {
+              "name": "Pilsener",
+              "quantity": 2
+            },
+            {
+              "name": "Club Premium",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "created": "2024-09-10 18:45:00",
+          "items": [
+            {
+              "name": "Budweiser",
+              "quantity": 2
+            },
+            {
+              "name": "Pilsener",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "created": "2024-09-10 19:30:00",
+          "items": [
+            {
+              "name": "Club Premium",
+              "quantity": 2
+            },
+            {
+              "name": "Pilsener",
+              "quantity": 2
+            },
+            {
+              "name": "Club Verde",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "created": "2024-09-11 19:00:00",
+      "paid": true,
+      "subtotal": 43.50,
+      "taxes": 5.22,
+      "discounts": 4.00,
+      "items": [
+        {
+          "name": "Club Verde",
+          "quantity": 6,
+          "price_per_unit": 3.50,
+          "total": 21.00
+        },
+        {
+          "name": "Pilsener Light",
+          "quantity": 4,
+          "price_per_unit": 2.75,
+          "total": 11.00
+        },
+        {
+          "name": "Latitud Cero",
+          "quantity": 2,
+          "price_per_unit": 4.00,
+          "total": 8.00
+        },
+        {
+          "name": "Biela",
+          "quantity": 2,
+          "price_per_unit": 1.75,
+          "total": 3.50
+        }
+      ],
+      "rounds": [
+        {
+          "created": "2024-09-11 19:10:00",
+          "items": [
+            {
+              "name": "Club Verde",
+              "quantity": 3
+            },
+            {
+              "name": "Pilsener Light",
+              "quantity": 2
+            },
+            {
+              "name": "Latitud Cero",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "created": "2024-09-11 20:05:00",
+          "items": [
+            {
+              "name": "Club Verde",
+              "quantity": 2
+            },
+            {
+              "name": "Pilsener Light",
+              "quantity": 1
+            },
+            {
+              "name": "Biela",
+              "quantity": 2
+            }
+          ]
+        },
+        {
+          "created": "2024-09-11 21:00:00",
+          "items": [
+            {
+              "name": "Club Verde",
+              "quantity": 1
+            },
+            {
+              "name": "Pilsener Light",
+              "quantity": 1
+            },
+            {
+              "name": "Latitud Cero",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "created": "2024-09-12 20:00:00",
+      "paid": false,
+      "subtotal": 36.50,
+      "taxes": 4.38,
+      "discounts": 2.50,
+      "items": [
+        {
+          "name": "Cerveza Siembra",
+          "quantity": 4,
+          "price_per_unit": 4.50,
+          "total": 18.00
+        },
+        {
+          "name": "Pilsener",
+          "quantity": 3,
+          "price_per_unit": 3.00,
+          "total": 9.00
+        },
+        {
+          "name": "Club Premium",
+          "quantity": 2,
+          "price_per_unit": 3.25,
+          "total": 6.50
+        },
+        {
+          "name": "Budweiser",
+          "quantity": 1,
+          "price_per_unit": 3.00,
+          "total": 3.00
+        }
+      ],
+      "rounds": [
+        {
+          "created": "2024-09-12 20:15:00",
+          "items": [
+            {
+              "name": "Cerveza Siembra",
+              "quantity": 2
+            },
+            {
+              "name": "Pilsener",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "created": "2024-09-12 21:00:00",
+          "items": [
+            {
+              "name": "Club Premium",
+              "quantity": 2
+            },
+            {
+              "name": "Pilsener",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "created": "2024-09-12 21:45:00",
+          "items": [
+            {
+              "name": "Cerveza Siembra",
+              "quantity": 1
+            },
+            {
+              "name": "Budweiser",
+              "quantity": 1
+            }
+          ]
+        },
+        {
+          "created": "2024-09-12 22:30:00",
+          "items": [
+            {
+              "name": "Cerveza Siembra",
+              "quantity": 1
+            },
+            {
+              "name": "Pilsener",
+              "quantity": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
