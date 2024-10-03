@@ -1,38 +1,8 @@
-# Makefile for Beer Store Project
-
 # Variables
 BACKEND_DIR = backend
 FRONTEND_DIR = frontend/beer-store-ui
 
-# Docker commands
-.PHONY: docker-up
-docker-up:
-	docker-compose up -d
-
-.PHONY: docker-down
-docker-down:
-	docker-compose down
-
-.PHONY: docker-rebuild
-docker-rebuild:
-	docker-compose up -d --build
-
-.PHONY: docker-logs
-docker-logs:
-	docker-compose logs -f
-
-.PHONY: docker-test
-docker-test: docker-test-backend docker-test-frontend
-
-.PHONY: docker-test-backend
-docker-test-backend:
-	docker-compose run --rm backend python manage.py test
-
-.PHONY: docker-test-frontend
-docker-test-frontend:
-	docker-compose run --rm frontend npm test
-
-# Backend commands (without Docker)
+# Backend commands
 .PHONY: install-backend
 install-backend:
 	cd $(BACKEND_DIR) && pipenv install
@@ -43,9 +13,9 @@ run-backend:
 
 .PHONY: test-backend
 test-backend:
-	cd $(BACKEND_DIR) && pipenv run python manage.py test
+	cd $(BACKEND_DIR) && pipenv run pytest
 
-# Frontend commands (without Docker)
+# Frontend commands
 .PHONY: install-frontend
 install-frontend:
 	cd $(FRONTEND_DIR) && npm install
@@ -58,7 +28,7 @@ run-frontend:
 test-frontend:
 	cd $(FRONTEND_DIR) && npm test
 
-# Combined commands (without Docker)
+# Combined commands
 .PHONY: install-all
 install-all: install-backend install-frontend
 
@@ -68,3 +38,24 @@ run-all:
 
 .PHONY: test-all
 test-all: test-backend test-frontend
+
+# Docker commands
+.PHONY: docker-up
+docker-up:
+	docker-compose up -d
+
+.PHONY: docker-down
+docker-down:
+	docker-compose down
+
+.PHONY: docker-build
+docker-build:
+	docker-compose build
+
+.PHONY: docker-test-backend
+docker-test-backend:
+	docker-compose run --rm backend pytest
+
+.PHONY: docker-logs
+docker-logs:
+	docker-compose logs -f
