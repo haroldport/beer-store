@@ -1,32 +1,74 @@
-'use client'
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { useOrders } from '@/hooks/useOrders';
+import React from "react";
+import Link from "next/link";
+import { useOrders } from "@/hooks/useOrders";
 
 const OrderList: React.FC = () => {
   const { data: orders, isLoading, error } = useOrders();
-  console.log('orders', orders);
-  console.log('isLoading', isLoading);
-  console.log('error', error);
 
-  if (isLoading) return <div>Cargando...</div>;
-  if (error) return <div>Error al cargar las órdenes</div>;
+  if (isLoading) return <div className="text-center py-4">Cargando...</div>;
+  if (error)
+    return (
+      <div className="text-center py-4 text-red-500">
+        Error al cargar las órdenes
+      </div>
+    );
 
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-2xl font-bold mb-4">Lista de Órdenes</h1>
-      <ul className="space-y-4">
-        {orders?.map((order) => (
-          <li key={order.id} className="bg-white shadow rounded-lg p-4">
-            <Link href={`/orders/${order.id}`}>
-              <h2 className="text-xl font-semibold">Orden #{order.id}</h2>
-              <p className="text-gray-600">Fecha: {new Date(order.created).toLocaleString()}</p>
-              <p className="text-gray-600">Total: ${order.subtotal.toFixed(2)}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold mb-6">Lista de Órdenes</h1>
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white">
+          <thead>
+            <tr className="border-b">
+              <th className="text-left py-3 px-4 font-semibold text-sm text-gray-600">
+                ID
+              </th>
+              <th className="text-left py-3 px-4 font-semibold text-sm text-gray-600">
+                Fecha
+              </th>
+              <th className="text-left py-3 px-4 font-semibold text-sm text-gray-600">
+                Total
+              </th>
+              <th className="text-left py-3 px-4 font-semibold text-sm text-gray-600">
+                Estado
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders?.map((order) => (
+              <tr key={order.id} className="border-b hover:bg-gray-50">
+                <td className="py-4 px-4">
+                  <Link
+                    href={`/orders/${order.id}`}
+                    className="text-blue-600 hover:underline"
+                  >
+                    #{order.id}
+                  </Link>
+                </td>
+                <td className="py-4 px-4 text-gray-500">
+                  {new Date(order.created).toLocaleDateString()}
+                </td>
+                <td className="py-4 px-4">
+                  ${(order.subtotal + order.taxes - order.discounts).toFixed(2)}
+                </td>
+                <td className="py-4 px-4">
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs ${
+                      order.paid
+                        ? "bg-green-100 text-green-800"
+                        : "bg-yellow-100 text-yellow-800"
+                    }`}
+                  >
+                    {order.paid ? "Pagado" : "Pendiente"}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
