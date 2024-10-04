@@ -10,7 +10,9 @@ services:
       - PIPENV_VENV_IN_PROJECT=1
 
   frontend:
-    build: ./frontend/beer-store-ui
+    build: 
+      context: ./frontend/beer-store-ui
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     volumes:

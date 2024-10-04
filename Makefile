@@ -2,10 +2,11 @@
 BACKEND_DIR = backend
 FRONTEND_DIR = frontend/beer-store-ui
 
-# Backend commands
+# Backend commands (without Docker)
 .PHONY: install-backend
 install-backend:
-	cd $(BACKEND_DIR) && pipenv install
+	cd $(BACKEND_DIR) && pipenv --venv || true
+	cd $(BACKEND_DIR) && pipenv --python 3.12 install --dev
 
 .PHONY: run-backend
 run-backend:
@@ -13,9 +14,9 @@ run-backend:
 
 .PHONY: test-backend
 test-backend:
-	cd $(BACKEND_DIR) && pipenv run pytest
+	cd $(BACKEND_DIR) && pipenv run test
 
-# Frontend commands
+# Frontend commands (without Docker)
 .PHONY: install-frontend
 install-frontend:
 	cd $(FRONTEND_DIR) && npm install
@@ -55,6 +56,14 @@ docker-build:
 .PHONY: docker-test-backend
 docker-test-backend:
 	docker-compose run --rm backend pytest
+	docker-compose down
+
+.PHONY: docker-test-frontend
+docker-test-frontend:
+	docker-compose run --rm frontend npm run test
+
+.PHONY: docker-test-all
+docker-test-all: docker-test-backend docker-test-frontend
 
 .PHONY: docker-logs
 docker-logs:
